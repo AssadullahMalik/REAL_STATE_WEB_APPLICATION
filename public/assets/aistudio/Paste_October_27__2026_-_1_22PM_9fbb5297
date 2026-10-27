@@ -1,0 +1,627 @@
+# MASTER IMPLEMENTATION PROMPT — PROPERTY PARTNER HCI IMPROVEMENT
+
+## Project Overview
+
+I have already developed a working prototype of **Property Partner**, an AI-powered real-estate platform. I now need to improve the existing application according to Human-Computer Interaction (HCI) principles, particularly Shneiderman's Eight Golden Rules, HCI Design Goals, Conceptual/Semantic/Syntactic/Lexical Models, and Screen Design Guidelines.
+
+Your task is to inspect my entire existing project, understand its architecture and current features, and implement the modifications and new features described below.
+
+**IMPORTANT:** Do not create a separate application, discard the existing prototype, or unnecessarily rewrite the project. Enhance the existing application while preserving its working functionality, established architecture, framework, components, routes, and design assets wherever possible.
+
+First inspect the source code, project structure, current UI, routes, existing components, state management, and backend integrations. Then implement the improvements directly in the project.
+
+Do not stop after providing a plan or recommendations. Make the actual code changes and verify them.
+
+---
+
+## PART 1 — IMPLEMENT SHNEIDERMAN'S EIGHT GOLDEN RULES
+
+### 1. Strive for Consistency
+
+Establish a consistent design system throughout Property Partner.
+
+Implement:
+- A unified color palette, typography, spacing, border radius, shadows, and icon style.
+- Consistent primary, secondary, destructive, and disabled button styles.
+- Consistent form fields, dropdowns, cards, modals, alerts, badges, and navigation.
+- Uniform page headings, section headings, labels, and terminology.
+- Consistent navigation behavior across buyer, seller, and administrator interfaces.
+- Consistent date, currency, property-area, address, and telephone formatting.
+- Clear visual differences between active, inactive, selected, disabled, success, warning, and error states.
+
+Create or improve reusable design tokens and UI components rather than implementing separate styles for similar elements.
+
+Use the same terminology throughout the application. For example, do not alternate between “Saved Properties,” “Favorites,” and “Wishlist” for the same feature unless their meanings are genuinely different.
+
+### 2. Enable Frequent Users to Use Shortcuts
+
+Introduce useful shortcuts that reduce repetitive actions.
+
+Implement:
+- A persistent search entry point on the main property browsing screens.
+- Quick-access navigation for Home, Search, Saved Properties, My Listings, Messages/Connections, and Profile, according to the user's role.
+- A favorite button directly on each property card.
+- Quick actions for viewing property details, contacting a seller, editing a listing, and managing saved properties.
+- Search filters that remain selected when the user returns from a property details page.
+- Recently viewed properties.
+- Saved searches or an equivalent quick way to reuse frequently used search criteria.
+- Keyboard accessibility, including logical Tab navigation, Enter/Space activation, and Escape to close appropriate dialogs.
+- Useful keyboard shortcuts for desktop users only when they do not conflict with normal browser behavior. Display shortcut hints where applicable.
+
+Avoid adding shortcuts that are difficult to discover or unnecessary for the task.
+
+### 3. Offer Informative Feedback
+
+Every important user action must produce an understandable response.
+
+Implement:
+- Loading indicators or skeleton placeholders while property data is being loaded.
+- Visible progress indicators for multi-step forms and longer operations.
+- Success messages after saving a property, updating a profile, creating a listing, or completing a connection request.
+- Clear validation messages beside invalid fields.
+- Informative empty states when no properties, messages, saved items, or search results exist.
+- Clear feedback when filters are applied or cleared.
+- AI processing states for AI Property Designer and AI Property Matchmaker.
+- Network or server error messages with a practical recovery action.
+- Disabled button states during operations to prevent accidental duplicate submissions.
+
+Examples:
+- “Property added to Saved Properties.”
+- “Your listing has been saved as a draft.”
+- “No properties match these filters. Try expanding your budget or location.”
+- “Unable to load properties. Please try again.”
+
+Never show a success message before the operation has actually succeeded. If the prototype uses simulated data, make the simulated behavior clear where necessary.
+
+### 4. Design Dialogs to Yield Closure
+
+Make important workflows feel complete and understandable.
+
+Implement:
+- Clear completion screens or confirmation messages after successful operations.
+- A visible summary after a property listing is created or updated.
+- A clear outcome after a user sends a connection request.
+- Confirmation and status information after a user completes an AI-assisted workflow.
+- A clear ending state for multi-step forms, such as “Listing Created” with actions to view the listing or return to the dashboard.
+- Clear confirmation when a time-limited AI Connect session is successfully started or ended.
+
+For destructive or financially significant actions, display a confirmation dialog that identifies the action and its consequences.
+
+Do not display confirmation dialogs for every minor action. Use lightweight feedback for reversible actions.
+
+### 5. Offer Simple Error Handling
+
+Make errors understandable and easy to correct.
+
+Implement:
+- Immediate form validation where appropriate.
+- Required-field indicators.
+- Appropriate email, phone number, numeric, price, and property-area validation.
+- Inline error messages explaining what needs to be corrected.
+- Clear messages for invalid login credentials, missing information, unavailable properties, and failed operations.
+- Preservation of valid user input when validation or network errors occur.
+- Retry options for recoverable errors.
+- Proper loading, error, and empty states for all major screens.
+
+Examples:
+- “Enter a valid email address.”
+- “Price must be greater than zero.”
+- “Enter a valid Pakistani phone number.”
+- “Please complete the required fields before continuing.”
+
+Do not rely on color alone to communicate an error. Pair color with text and, where appropriate, an icon.
+
+### 6. Permit Easy Reversal of Actions
+
+Users should be able to recover from mistakes without unnecessarily repeating their work.
+
+Implement:
+- Easy removal and restoration of saved-property selections where appropriate.
+- An Undo action after reversible operations such as removing a property from Saved Properties.
+- Cancel buttons for forms and dialogs.
+- A confirmation dialog before permanently deleting a listing or account.
+- A warning before leaving a form containing unsaved changes.
+- Draft saving or recoverable form state for longer listing workflows.
+- Clear options to reset search filters and restore default values.
+- A way to return to the previous screen without losing useful search context.
+
+Do not implement fake undo functionality. The action must genuinely restore the previous state.
+
+### 7. Support Internal Locus of Control
+
+Users must feel that they are directing the application rather than being controlled by it.
+
+Implement:
+- Explicit user-initiated actions for applying filters, submitting forms, publishing listings, and starting AI Connect sessions.
+- Clear Cancel, Back, Close, and Stop actions where appropriate.
+- User-controlled search filters and sorting.
+- Editable profile information and property listings.
+- The ability to dismiss noncritical notifications.
+- Clear visibility into the current state of each listing and connection.
+- Explicit consent before starting a paid or time-limited connection session.
+- A clear indication of the session duration, applicable cost, and remaining time wherever relevant and supported.
+- No unexpected redirects, automatic purchases, automatic publication, or unexpected destructive actions.
+- A clear way to stop AI processing or leave an operation when technically possible.
+
+AI recommendations must assist the user rather than automatically making significant decisions on their behalf.
+
+### 8. Reduce Short-Term Memory Load
+
+Make information visible when users need it.
+
+Implement:
+- Clearly labeled navigation and page sections.
+- Persistent search criteria when navigating between results and details.
+- Visible applied-filter chips.
+- Property summaries containing the most important information.
+- Recently viewed and saved properties.
+- Pre-filled fields when editing existing listings.
+- Contextual hints and examples inside complex forms.
+- A progress indicator and step labels for multi-step property creation.
+- Clear summaries of previously entered information before final submission.
+- Visible AI recommendation criteria, such as budget, location, property type, and selected amenities.
+
+Do not force users to remember information from one screen while completing a task on another.
+
+---
+
+## PART 2 — IMPROVE INFORMATION DISPLAY
+
+Review all screens to ensure information is relevant, understandable, consistently presented, and accessible.
+
+### Property Cards
+
+Each property card should display the most useful available information:
+- Property image or existing project image asset.
+- Property title.
+- Price with appropriate currency formatting.
+- Location.
+- Property type.
+- Number of bedrooms and bathrooms, when applicable.
+- Property area and its unit.
+- Listing status, where relevant.
+- Favorite/save control.
+- A clear action to view details.
+
+Use visual hierarchy to make price, title, and location easy to identify. Avoid overcrowding cards with unnecessary information.
+
+### Property Details Screen
+
+Organize details into logical sections:
+- Property overview.
+- Images or gallery.
+- Price and location.
+- Specifications.
+- Description.
+- Amenities and facilities.
+- Seller or agent information.
+- Listing status.
+- Contact or connection actions.
+- Related or recommended properties.
+
+Use expandable sections only where they meaningfully reduce clutter. Keep critical details easy to find.
+
+### Dashboard and Navigation
+
+Improve dashboards for buyers, sellers, and administrators according to their actual permissions.
+
+Buyer dashboard:
+- Saved properties.
+- Recently viewed properties.
+- Recent searches.
+- Recommended properties.
+- Relevant connection requests or messages.
+
+Seller dashboard:
+- My listings.
+- Listing status.
+- Create listing.
+- Edit and manage listings.
+- Relevant connection activity.
+
+Administrator dashboard:
+- Appropriate system overview.
+- Property and user management.
+- Pending listing reviews or moderation, if supported.
+- Clear status indicators and administrative actions.
+
+Do not expose administrator-only controls to ordinary users.
+
+### Typography and Accessibility
+
+- Use readable typography, preferably at least 16px for normal body text.
+- Maintain sufficient contrast between text and backgrounds.
+- Use consistent spacing and alignment.
+- Give icon-only controls accessible names and tooltips where appropriate.
+- Provide alternative text for meaningful images.
+- Ensure visible keyboard focus.
+- Use semantic headings, labels, buttons, and form controls.
+- Do not communicate meaning through color alone.
+- Respect reduced-motion preferences.
+- Ensure layouts work on mobile, tablet, and desktop.
+
+---
+
+## PART 3 — IMPROVE DATA ENTRY AND FORMS
+
+Review every form, including authentication, profiles, property listings, search, AI Property Designer, and connection workflows.
+
+Implement:
+- Clear field labels rather than relying exclusively on placeholders.
+- Appropriate input types, dropdowns, checkboxes, and numeric controls.
+- Required-field indicators.
+- Immediate, understandable validation.
+- Helpful input examples.
+- Sensible defaults when appropriate.
+- Preservation of entered data when navigating between steps.
+- A clear submission state.
+- Prevention of duplicate submissions.
+- A clear success or recovery state after submission.
+
+For property listing forms, group fields into sections:
+
+1. Basic information.
+2. Property type and transaction type.
+3. Location and address.
+4. Price and area.
+5. Bedrooms, bathrooms, and other specifications.
+6. Description and amenities.
+7. Images and media.
+8. Preview and confirmation.
+
+Use a multi-step form if it improves the existing workflow. Include a progress indicator, Back, Continue, Save Draft, Cancel, and a final review step where appropriate.
+
+Validate fields before final submission and preserve all valid inputs if errors occur.
+
+Use Pakistani conventions where appropriate, including PKR currency formatting, +92 telephone-number examples, and locally relevant property-area units such as square feet, square yards, and marla. Do not silently convert between units without making the conversion clear.
+
+---
+
+## PART 4 — APPLY THE FOUR HCI INTERACTION MODELS
+
+Apply the Conceptual, Semantic, Syntactic, and Lexical Models to the actual application.
+
+### 1. Conceptual Model — What the System Means to the User
+
+Make the application's functionality easy to understand without requiring technical knowledge.
+
+Users should understand:
+- What Property Partner does.
+- The difference between buying, selling, and designing a property.
+- How property search and recommendations work.
+- What Saved Properties means.
+- How a listing progresses from draft to published or another supported status.
+- How AI Connect, connection requests, and any paid or time-limited sessions work.
+
+Use familiar real-estate terminology and a logical navigation structure.
+
+### 2. Semantic Model — Whether Actions Produce the Intended Results
+
+Ensure every action matches its label and the user's intention.
+
+Examples:
+- Clicking Save adds the property to Saved Properties.
+- Clicking Remove removes the selected property and offers Undo where appropriate.
+- Clicking Edit opens the correct editable listing.
+- Clicking Apply Filters updates the results according to the selected filters.
+- Clicking Clear Filters resets them.
+- Clicking Publish publishes the listing only after successful validation and any required confirmation.
+- Clicking Contact Seller opens the correct connection workflow.
+- AI Property Matchmaker recommendations reflect the user's selected criteria.
+
+Do not create buttons that only look functional. Every implemented control must perform its advertised action or be clearly marked as unavailable.
+
+### 3. Syntactic Model — The Correct Sequence of Actions
+
+Ensure workflows follow a predictable order.
+
+Property search:
+Enter search criteria → Apply filters → Review results → Open property details → Save or initiate contact.
+
+Property listing:
+Open Create Listing → Enter details → Validate → Preview → Confirm publication or save draft → Show completion status.
+
+AI Property Designer:
+Enter design requirements → Validate inputs → Start design processing → Display results or a clear error → Allow the user to revise inputs or continue.
+
+AI Property Matchmaker:
+Set preferences → Submit criteria → Display matching properties → Explain relevant match criteria → Allow refinement or saving.
+
+AI Connect:
+Select a property or connection → Review the other party and applicable session terms → Confirm the session → Start the supported connection → Display session status → End the session clearly.
+
+Adjust these sequences to match the actual capabilities of the existing application. Do not pretend that external communication, payment, or AI services are integrated if they are not.
+
+### 4. Lexical Model — The Words, Symbols, and Controls
+
+Use clear, familiar language and meaningful icons.
+
+Implement:
+- “Save Property” or a consistently labeled favorite control.
+- “Create Listing,” “Edit Listing,” and “Delete Listing.”
+- “Apply Filters” and “Clear Filters.”
+- “Contact Seller” or “Start Connection.”
+- Clear labels for price, location, area, and property type.
+- Tooltips or accessible labels for unfamiliar icons.
+- Consistent button text and status terminology.
+
+Avoid ambiguous icons, unexplained abbreviations, technical error codes, and labels that do not describe the resulting action.
+
+---
+
+## PART 5 — SCREEN DESIGN AND STYLE GUIDE
+
+Create or refine a unified screen design system for Property Partner.
+
+### Screen Types to Review
+
+Inspect and improve the existing implementations of:
+- Splash/loading screen, if present.
+- Login and registration.
+- Home/dashboard.
+- Property catalog and search.
+- Property details.
+- Saved Properties.
+- Create/Edit Listing.
+- User profile and settings.
+- AI Property Designer.
+- AI Property Matchmaker.
+- AI Connect or connection management.
+- Confirmation, error, and empty-state screens.
+- Administrative screens.
+
+Do not add unnecessary duplicate screens if equivalent screens already exist.
+
+### Layout Requirements
+
+- Use a consistent grid and alignment system.
+- Group related fields and information together.
+- Use whitespace to separate sections.
+- Establish a clear hierarchy between page titles, section headings, content, and actions.
+- Keep primary actions visually prominent.
+- Place secondary and destructive actions appropriately.
+- Avoid unnecessary pop-ups and excessive decorative elements.
+- Keep navigation predictable across routes.
+- Ensure responsive behavior without horizontal overflow.
+
+### Style Guide
+
+Define reusable standards for:
+- Primary and secondary colors.
+- Typography and heading scales.
+- Spacing and layout.
+- Buttons and interactive states.
+- Form controls.
+- Property cards.
+- Dialogs and notifications.
+- Icons.
+- Image aspect ratios.
+- Borders and shadows.
+- Currency, area, date, and phone formatting.
+
+Use the project's existing brand identity where possible. Improve the current design rather than introducing an unrelated visual style.
+
+---
+
+## PART 6 — NEW FEATURE: ADVANCED PROPERTY SEARCH AND FILTERING
+
+Implement or improve an interactive property search system.
+
+Provide relevant filters for:
+- Buy or rent.
+- City, area, or location.
+- Minimum and maximum price.
+- Property type.
+- Minimum bedrooms and bathrooms, when applicable.
+- Minimum and maximum area.
+- Relevant amenities, if supported.
+- Listing status, where appropriate.
+
+Add:
+- Sorting by price, newest listing, and other relevant supported criteria.
+- Visible applied-filter chips.
+- A Clear All Filters action.
+- Search result counts when reliable.
+- A useful empty state with suggestions for broadening the search.
+- Persistent filters when returning from property details.
+- Search and filter state that remains consistent across navigation.
+
+All filters must affect the displayed results. Use real application data where available, or a coherent local prototype dataset if the application is currently a frontend-only prototype.
+
+---
+
+## PART 7 — NEW FEATURE: SAVED PROPERTIES AND RECENTLY VIEWED
+
+Implement a complete saved-property experience.
+
+Requirements:
+- Save and unsave properties from both cards and detail pages.
+- Display saved properties in a dedicated screen.
+- Persist saved items using the project's existing database, backend, or state-persistence mechanism.
+- For a frontend-only prototype, use the existing persistence approach or local storage where appropriate.
+- Keep the saved state consistent across all screens.
+- Offer Undo after removing a saved property.
+- Show an informative empty state.
+- Track recently viewed properties where technically appropriate.
+- Prevent duplicate entries.
+
+Do not add a separate favorite system that conflicts with an existing wishlist or saved-property implementation.
+
+---
+
+## PART 8 — NEW FEATURE: PROPERTY COMPARISON
+
+Allow users to compare multiple properties side by side.
+
+Implement:
+- A Compare action on property cards or detail pages.
+- A visible indicator of the number of selected properties.
+- A dedicated comparison screen or panel.
+- Comparison of available information, including price, location, area, property type, bedrooms, bathrooms, and amenities.
+- Clear identification of differences between properties.
+- The ability to remove a property from the comparison.
+- A clear empty state and a reasonable selection limit.
+- A way to open the full details of a property from the comparison.
+
+Use the existing property data model and avoid inventing missing specifications.
+
+---
+
+## PART 9 — IMPROVE AI PROPERTY DESIGNER
+
+Preserve the existing AI Property Designer feature and improve its interaction flow.
+
+Requirements:
+- Organize design requirements into clear sections.
+- Provide sensible input controls for property type, budget, area, preferred style, rooms, and design requirements, where supported.
+- Use contextual hints and appropriate validation.
+- Display progress or a processing state when generating a design.
+- Present the result in a readable layout.
+- Clearly distinguish generated suggestions from verified property facts.
+- Allow users to revise their requirements and generate a new result.
+- Provide a clear recovery state if generation fails.
+- Preserve the user's inputs when retrying.
+- Include a summary of the selected requirements.
+
+Do not claim that an AI-generated floor plan, estimate, or design is professionally certified or construction-ready.
+
+If the AI integration already exists, use it. If it is missing, implement an honest prototype state or an integration-ready interface without falsely presenting fabricated output as a real AI response.
+
+---
+
+## PART 10 — IMPROVE AI PROPERTY MATCHMAKER
+
+Create a simple, transparent recommendation workflow.
+
+Requirements:
+- Collect the user's preferred transaction type, location, budget, property type, area, and other relevant criteria.
+- Validate the selected criteria.
+- Display matching properties using the actual available property dataset.
+- Explain why a property matches, such as its location, price range, or specifications.
+- Make the criteria editable.
+- Allow users to refine the results without starting over.
+- Provide a clear empty state when no suitable properties are found.
+- Allow matching properties to be saved or opened for details.
+
+Do not claim that recommendations are AI-generated unless the actual AI integration is being used. If the existing prototype uses rule-based matching, label the feature appropriately while preserving the intended user experience.
+
+---
+
+## PART 11 — IMPROVE AI CONNECT AND COMMUNICATION
+
+Enhance the existing AI Connect or connection workflow while respecting the project's current architecture.
+
+Requirements:
+- Clearly explain who the user is connecting with and why.
+- Display the applicable session duration, pricing, and terms before confirmation when these features are supported.
+- Require explicit confirmation before starting any paid or time-limited session.
+- Display connection status and remaining session time when relevant.
+- Provide clear options to cancel or end a session.
+- Display understandable error states if the connection fails.
+- Confirm when a connection request is sent successfully.
+- Distinguish pending, accepted, rejected, active, completed, and expired states where applicable.
+- Prevent duplicate submissions and inconsistent session states.
+
+If voice/video calls, payment processing, or real-time communication are not currently integrated, do not simulate a successful external call or payment. Provide an honest prototype interaction and clearly identify the integration boundary.
+
+---
+
+## PART 12 — USER CONTROL, SAFETY, AND PRIVACY
+
+Improve user trust and error prevention.
+
+Implement:
+- Confirmation before irreversible actions.
+- Undo for suitable reversible actions.
+- Unsaved-change warnings.
+- Clear logout and session-state handling.
+- Appropriate role-based access to buyer, seller, and administrator functions.
+- Clear feedback when an operation is rejected due to permissions.
+- No exposure of private user information in public property cards.
+- No unnecessary collection of personal information.
+- Clear consent and terms before applicable paid connection sessions.
+- Safe handling of authentication credentials and session tokens.
+
+Do not weaken existing authentication security to simplify the interface. Do not store plaintext passwords or expose secrets in frontend code.
+
+---
+
+## PART 13 — FUNCTIONALITY AND IMPLEMENTATION RULES
+
+Follow these rules throughout the implementation:
+
+1. Inspect the existing repository before editing.
+2. Preserve the existing technology stack, package manager, project conventions, and useful components.
+3. Reuse existing routes, data models, integrations, and styling whenever possible.
+4. Implement functional behavior, not merely decorative buttons.
+5. Avoid duplicating features that already exist.
+6. Do not replace the application with static screenshots or a disconnected mockup.
+7. Use existing backend APIs and database integrations where available.
+8. If the application is a prototype without a backend, use a consistent local dataset and appropriate local persistence without pretending that data has been saved to a real server.
+9. Preserve working AI integrations and avoid unnecessary retraining or replacement of existing models.
+10. Implement responsive and accessible interfaces.
+11. Use reusable components and avoid unnecessary code duplication.
+12. Maintain consistent state across cards, details, search results, dashboards, and saved-property screens.
+13. Handle loading, success, error, and empty states.
+14. Avoid introducing unnecessary dependencies.
+15. Do not remove existing functionality unless a change is necessary and compatible with the project's requirements.
+16. Do not hardcode fake success responses for failed operations.
+17. Keep code readable and compatible with the project's current framework and version.
+18. Do not expose API keys, credentials, or private configuration in client-side code.
+
+---
+
+## PART 14 — TESTING AND VERIFICATION
+
+After implementing the improvements, verify the actual application.
+
+Test the following scenarios:
+
+- Navigation between the main screens.
+- Login and registration validation, if present.
+- Property search and filtering.
+- Sorting and clearing filters.
+- Opening property details.
+- Saving and removing properties.
+- Undo after removing a saved property.
+- Recently viewed properties.
+- Comparing multiple properties.
+- Creating, editing, and deleting a listing.
+- Validation and preservation of form inputs.
+- Draft saving and unsaved-change warnings, where implemented.
+- AI Property Designer success and error states.
+- AI Property Matchmaker results and empty states.
+- Connection request and session state transitions.
+- Role-based permissions.
+- Keyboard navigation and visible focus.
+- Mobile, tablet, and desktop layouts.
+- Loading, error, success, and empty states.
+- Persistence after refreshing the page, where applicable.
+
+Run the existing tests, lint checks, and production build if supported. Fix regressions introduced by your changes.
+
+Do not report tests as passed unless they were actually executed successfully. Clearly distinguish automated test results from manual inspection.
+
+---
+
+## PART 15 — FINAL DELIVERABLE
+
+After finishing the implementation, provide a concise but informative report containing:
+
+1. Summary of modifications.
+2. New features implemented.
+3. Mapping of the Eight Golden Rules to actual implemented features.
+4. How the Conceptual, Semantic, Syntactic, and Lexical Models were applied.
+5. Improvements made to information display, data entry, accessibility, and screen design.
+6. List of important files created or modified.
+7. Tests and build commands executed, with their actual results.
+8. Features that still require backend, AI, payment, or real-time communication integration.
+9. Any known limitations or remaining issues.
+
+## FINAL OBJECTIVE
+
+Transform the existing Property Partner prototype into a cohesive, responsive, intuitive, and functionally consistent real-estate application that demonstrates practical implementation of HCI principles.
+
+Prioritize usability, consistency, feedback, error prevention, user control, accessibility, and reduced cognitive load.
+
+**Begin by inspecting the existing project, then implement the improvements directly without unnecessarily rebuilding the application.**

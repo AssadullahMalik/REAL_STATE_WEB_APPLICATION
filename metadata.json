@@ -1,0 +1,6 @@
+{
+  "name": "Property Partner",
+  "description": "AI-Powered Real Estate Platform for property discovery, AI design visualization, and verified buyer-seller connections.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

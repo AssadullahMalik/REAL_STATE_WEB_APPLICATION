@@ -1,0 +1,1166 @@
+# SOFTWARE REQUIREMENTS SPECIFICATION (SRS)
+# Property Partner
+**Project Type:** AI-Powered Real Estate Web Application  
+**Course:** Human–Computer Interaction (HCI)  
+**Document Version:** 1.0  
+**Target Platform:** Responsive Web Application  
+**Implementation Tool:** Lovable
+
+---
+
+# 1. INTRODUCTION
+
+## 1.1 Purpose
+
+Property Partner is an AI-powered real estate platform designed to simplify property searching, property visualization, and communication between property buyers and sellers.
+
+This Software Requirements Specification defines the functional requirements, non-functional requirements, user interface design, navigation structure, user workflows, and usability standards for developing the Property Partner prototype.
+
+The primary purpose of this project is to demonstrate good Human–Computer Interaction (HCI) principles through a user-friendly, accessible, consistent, and interactive web interface.
+
+## 1.2 Project Scope
+
+Property Partner provides three main services:
+
+1. **AI Property Designer:** Helps users explore possible property improvements and interior or exterior design concepts using uploaded photographs and property information.
+2. **AI Property Matchmaker:** Helps buyers discover properties based on their budgets, preferred locations, property types, and requirements.
+3. **AI Connect:** Enables buyers and sellers to communicate through paid, time-limited connection plans.
+
+The application also includes property listings, property details, user authentication, saved properties, seller dashboards, property management, subscription plans, and administrative interfaces.
+
+## 1.3 Problem Statement
+
+Traditional real estate platforms can make it difficult for users to find suitable properties, compare prices, visualize property improvements, and communicate efficiently with sellers.
+
+Property Partner addresses these challenges by combining organized property listings, preference-based matching, AI-assisted design concepts, and structured buyer–seller communication in one platform.
+
+## 1.4 Project Objectives
+
+- Simplify property searching and discovery.
+- Improve the organization and readability of property information.
+- Help buyers find suitable properties according to their preferences.
+- Provide AI-assisted property design concepts.
+- Facilitate communication between buyers and sellers.
+- Introduce a transparent, time-limited connection subscription model.
+- Improve usability through effective HCI design principles.
+- Provide a responsive interface for desktop, tablet, and mobile devices.
+- Demonstrate a complete and interactive real estate application prototype.
+
+## 1.5 Definitions
+
+- HCI: Human–Computer Interaction.
+- SRS: Software Requirements Specification.
+- AI: Artificial Intelligence.
+- Buyer: A user searching for properties.
+- Seller: A user listing a property for sale or rent.
+- Property Match: A property matching a user's preferences.
+- AI Property Designer: A service for generating property design concepts.
+- AI Connect: A service providing time-limited buyer–seller communication access.
+- Prototype: An interactive demonstration of the intended application.
+
+---
+
+# 2. OVERALL DESCRIPTION
+
+## 2.1 Product Perspective
+
+Property Partner shall be a responsive web application that integrates property discovery, AI-assisted services, and buyer–seller communication.
+
+The prototype shall demonstrate the main workflows using realistic sample data and functional frontend interactions. Backend services, real AI processing, production authentication, and real payments shall be integrated only when explicitly configured.
+
+## 2.2 User Classes
+
+### 2.2.1 Guest User
+- Browse public property listings.
+- View property details.
+- Explore available services.
+- Register or log in.
+
+### 2.2.2 Buyer
+- Search and filter properties.
+- View property details.
+- Save favorite properties.
+- Compare properties.
+- Use AI Property Matchmaker.
+- Use AI Property Designer.
+- Purchase or simulate an AI Connect plan.
+- Communicate with sellers when access is available.
+- Manage profile information.
+
+### 2.2.3 Seller
+- Create a property listing.
+- Upload property photographs.
+- Enter property information.
+- Edit or remove listings.
+- View listing status.
+- Receive and respond to buyer inquiries.
+- Manage profile information.
+
+### 2.2.4 Real Estate Agent
+- Manage multiple property listings.
+- View buyer inquiries.
+- Update listing information.
+- Manage professional profile details.
+
+### 2.2.5 Administrator
+- View users and property listings.
+- Review reported content.
+- Manage listing approval status.
+- Review platform activity and subscription records.
+
+Administrative operations may be demonstrated through sample data in the prototype.
+
+## 2.3 Operating Environment
+
+- Frontend: React and TypeScript.
+- Development platform: Lovable.
+- Styling: Tailwind CSS.
+- Components: reusable UI component library.
+- Icons: Lucide icons.
+- Routing: React Router or the routing solution supported by the generated project.
+- Data: realistic sample data initially.
+- Responsive support: desktop, tablet, and mobile.
+- Browsers: current versions of Chrome, Edge, Firefox, and Safari.
+
+Lovable should preserve the existing project setup and use compatible dependencies rather than unnecessarily replacing the framework.
+
+## 2.4 Design Constraints
+
+- The application must maintain consistent navigation, typography, colors, spacing, and component styles.
+- All important buttons must perform their intended actions.
+- Forms must validate user input.
+- Errors must be presented in clear and understandable language.
+- Property information must be organized logically.
+- Subscription prices and expiry conditions must be disclosed before confirmation.
+- Simulated AI results must not be presented as genuine AI-generated results.
+- Sample verification badges must not imply actual identity or property verification.
+- All major workflows must remain usable on mobile devices.
+- User data must not be exposed to unauthorized users in a production implementation.
+
+## 2.5 Assumptions and Dependencies
+
+- The initial version may use realistic demonstration listings.
+- AI processing may be simulated until a real AI provider is integrated.
+- Payments may be simulated for the prototype.
+- Persistent accounts and messaging require a backend.
+- Property authenticity and ownership require appropriate verification procedures.
+
+---
+
+# 3. FUNCTIONAL REQUIREMENTS
+
+## 3.1 User Authentication and Profile Management
+
+**Requirement IDs: FR-AUTH-01 to FR-AUTH-08**
+
+- FR-AUTH-01: The system shall provide registration, login, and logout interfaces.
+- FR-AUTH-02: Registration shall collect name, email, password, and intended user role.
+- FR-AUTH-03: Login shall validate required fields and display appropriate feedback.
+- FR-AUTH-04: Password fields shall include show/hide controls.
+- FR-AUTH-05: Password recovery shall provide a clear recovery workflow.
+- FR-AUTH-06: Users shall be able to view and edit their profile information.
+- FR-AUTH-07: Protected actions shall request authentication when necessary.
+- FR-AUTH-08: The interface shall provide clear feedback after successful or unsuccessful authentication.
+
+## 3.2 Home Page
+
+**Requirement IDs: FR-HOME-01 to FR-HOME-08**
+
+- FR-HOME-01: The home page shall introduce Property Partner.
+- FR-HOME-02: It shall provide a prominent property search interface.
+- FR-HOME-03: It shall include navigation to AI Property Designer, AI Property Matchmaker, and AI Connect.
+- FR-HOME-04: It shall display featured property listings.
+- FR-HOME-05: It shall provide property categories such as houses, apartments, plots, and commercial properties.
+- FR-HOME-06: It shall display a clear call to action for buyers and sellers.
+- FR-HOME-07: It shall explain the platform's main benefits.
+- FR-HOME-08: It shall include a footer with contact information, service links, and policy links.
+
+## 3.3 Property Search and Discovery
+
+**Requirement IDs: FR-SEARCH-01 to FR-SEARCH-10**
+
+- FR-SEARCH-01: Users shall be able to search properties by location.
+- FR-SEARCH-02: Users shall be able to filter by minimum and maximum price.
+- FR-SEARCH-03: Users shall be able to filter by property type.
+- FR-SEARCH-04: Users shall be able to filter by sale or rental status.
+- FR-SEARCH-05: Users shall be able to filter by bedrooms, bathrooms, and area.
+- FR-SEARCH-06: Users shall be able to sort results by price, newest listings, and relevance.
+- FR-SEARCH-07: Results shall be displayed in consistent property cards.
+- FR-SEARCH-08: Users shall be able to clear filters.
+- FR-SEARCH-09: The system shall display an informative empty state when no properties match.
+- FR-SEARCH-10: Users shall be able to open the detailed view of any property.
+
+## 3.4 Property Details
+
+**Requirement IDs: FR-PROP-01 to FR-PROP-09**
+
+- FR-PROP-01: Each property shall have a dedicated details page.
+- FR-PROP-02: The page shall display property photographs.
+- FR-PROP-03: It shall display price, location, property type, area, bedrooms, and bathrooms where applicable.
+- FR-PROP-04: It shall display the property description and available amenities.
+- FR-PROP-05: It shall display seller or agent contact information according to access permissions.
+- FR-PROP-06: Buyers shall be able to save properties to favorites.
+- FR-PROP-07: Buyers shall be able to initiate a seller inquiry.
+- FR-PROP-08: Users shall be able to share a property using available sharing functionality.
+- FR-PROP-09: The interface shall clearly identify unavailable or incomplete information rather than inventing details.
+
+## 3.5 AI Property Matchmaker
+
+**Requirement IDs: FR-MATCH-01 to FR-MATCH-10**
+
+- FR-MATCH-01: The system shall provide a guided property preference form.
+- FR-MATCH-02: Users shall be able to enter their budget range.
+- FR-MATCH-03: Users shall be able to select a preferred location.
+- FR-MATCH-04: Users shall be able to select property type and sale or rental preference.
+- FR-MATCH-05: Users shall be able to specify bedrooms, area, and preferred amenities.
+- FR-MATCH-06: The system shall validate required preferences.
+- FR-MATCH-07: The system shall display properties that match the selected preferences.
+- FR-MATCH-08: Results shall display matching reasons, such as price range, location, or property type.
+- FR-MATCH-09: Users shall be able to modify their preferences and generate results again.
+- FR-MATCH-10: When no suitable properties exist, the system shall suggest relaxing selected filters.
+
+The prototype may use a deterministic matching algorithm over sample listings. It must clearly identify simulated recommendations if a genuine AI service is not connected.
+
+## 3.6 AI Property Designer
+
+**Requirement IDs: FR-DESIGN-01 to FR-DESIGN-11**
+
+- FR-DESIGN-01: The system shall provide an AI Property Designer page.
+- FR-DESIGN-02: Users shall be able to upload a property photograph.
+- FR-DESIGN-03: The interface shall display an image preview before submission.
+- FR-DESIGN-04: Users shall be able to specify property type and design area.
+- FR-DESIGN-05: Users shall be able to choose a design style, such as modern, minimalist, traditional, contemporary, or luxury.
+- FR-DESIGN-06: Users shall be able to select a preferred color palette.
+- FR-DESIGN-07: Users shall be able to enter additional design requirements.
+- FR-DESIGN-08: The system shall validate file type, file size, and required inputs.
+- FR-DESIGN-09: The system shall display a processing state when generating or simulating results.
+- FR-DESIGN-10: Results shall be presented as design concepts with a clear explanation.
+- FR-DESIGN-11: Users shall be able to start a new design or save or download available results where supported.
+
+If no image-generation provider is configured, the interface shall display a clearly labeled demonstration result instead of falsely claiming that a real AI model processed the uploaded photograph.
+
+## 3.7 AI Connect and Communication
+
+**Requirement IDs: FR-CONNECT-01 to FR-CONNECT-12**
+
+- FR-CONNECT-01: The system shall provide an AI Connect information page.
+- FR-CONNECT-02: It shall explain the benefits and limitations of connection plans.
+- FR-CONNECT-03: It shall display plan prices and access duration.
+- FR-CONNECT-04: Users shall be able to select an available plan.
+- FR-CONNECT-05: The system shall display the total cost and duration before confirmation.
+- FR-CONNECT-06: The prototype shall provide a simulated purchase confirmation workflow.
+- FR-CONNECT-07: The system shall display the connection's start date and expiry date when available.
+- FR-CONNECT-08: The interface shall show remaining access time or the expiry date.
+- FR-CONNECT-09: Users with active access shall be able to open the messaging interface.
+- FR-CONNECT-10: Users without active access shall see a clear explanation and a link to available plans.
+- FR-CONNECT-11: Expired connections shall no longer allow protected communication actions in the prototype.
+- FR-CONNECT-12: Users shall receive confirmation or error feedback after relevant actions.
+
+For demonstration purposes, a sample plan may provide 30 days of access. This is a configurable example, not a fixed commercial price or final business decision.
+
+Real payments, persistent messaging, and secure entitlement enforcement require backend integration.
+
+## 3.8 Seller Dashboard and Listing Management
+
+**Requirement IDs: FR-SELLER-01 to FR-SELLER-11**
+
+- FR-SELLER-01: Sellers shall have access to a dedicated dashboard.
+- FR-SELLER-02: The dashboard shall display total listings, active listings, pending listings, and inquiries using available data.
+- FR-SELLER-03: Sellers shall be able to create a new property listing.
+- FR-SELLER-04: Listing forms shall collect title, description, location, price, property type, area, and relevant property features.
+- FR-SELLER-05: Sellers shall be able to upload multiple property photographs where supported.
+- FR-SELLER-06: The system shall validate required listing fields.
+- FR-SELLER-07: Sellers shall be able to edit existing listings.
+- FR-SELLER-08: Sellers shall be able to remove listings after confirmation.
+- FR-SELLER-09: The interface shall display listing status, such as draft, pending review, published, or rejected.
+- FR-SELLER-10: Sellers shall be able to review buyer inquiries.
+- FR-SELLER-11: The system shall display a success message after a listing is saved.
+
+## 3.9 Saved Properties and Comparison
+
+**Requirement IDs: FR-SAVE-01 to FR-SAVE-06**
+
+- FR-SAVE-01: Buyers shall be able to add and remove favorite properties.
+- FR-SAVE-02: The system shall provide a dedicated saved-properties page.
+- FR-SAVE-03: Users shall be able to compare selected properties.
+- FR-SAVE-04: The comparison interface shall organize prices, locations, areas, property types, and available features in aligned columns or cards.
+- FR-SAVE-05: Users shall be able to remove properties from comparison.
+- FR-SAVE-06: Empty states shall explain how users can add properties.
+
+## 3.10 Notifications and Feedback
+
+**Requirement IDs: FR-NOTIF-01 to FR-NOTIF-06**
+
+- FR-NOTIF-01: The system shall display success feedback after completed actions.
+- FR-NOTIF-02: The system shall display clear validation messages for invalid forms.
+- FR-NOTIF-03: Loading states shall be shown during asynchronous operations.
+- FR-NOTIF-04: Empty states shall explain what users can do next.
+- FR-NOTIF-05: Destructive actions shall require confirmation.
+- FR-NOTIF-06: Errors shall provide a recovery action where possible.
+
+## 3.11 Administrative Interface
+
+**Requirement IDs: FR-ADMIN-01 to FR-ADMIN-06**
+
+- FR-ADMIN-01: The prototype shall provide a sample administrative dashboard.
+- FR-ADMIN-02: Administrators shall be able to view sample user and listing records.
+- FR-ADMIN-03: The interface shall demonstrate listing review and approval workflows.
+- FR-ADMIN-04: Administrators shall be able to view reported listings.
+- FR-ADMIN-05: Administrative actions shall require appropriate authorization in a production system.
+- FR-ADMIN-06: Sample administrative data shall be labeled as demonstration data.
+
+---
+
+# 4. NON-FUNCTIONAL REQUIREMENTS
+
+## 4.1 Usability
+
+- NFR-USE-01: Navigation shall be understandable to first-time users.
+- NFR-USE-02: Common tasks shall require as few unnecessary steps as practical.
+- NFR-USE-03: Buttons shall use clear action-oriented labels.
+- NFR-USE-04: Forms shall group related fields logically.
+- NFR-USE-05: Users shall be able to recognize their current page or section.
+- NFR-USE-06: The system shall use familiar interface patterns and consistent terminology.
+
+## 4.2 Performance
+
+- NFR-PERF-01: Local navigation and common interactions should respond promptly.
+- NFR-PERF-02: Images shall be appropriately sized and optimized.
+- NFR-PERF-03: Loading indicators shall appear during operations that take noticeable time.
+- NFR-PERF-04: Large listing collections should use pagination or another suitable rendering strategy.
+
+## 4.3 Security and Privacy
+
+- NFR-SEC-01: Production authentication shall use a secure authentication provider or properly implemented server-side authentication.
+- NFR-SEC-02: Passwords shall never be stored or transmitted as plain text in production.
+- NFR-SEC-03: Production communication and sensitive information shall be transmitted over HTTPS.
+- NFR-SEC-04: Protected actions shall be authorized on the server.
+- NFR-SEC-05: Uploaded files shall be validated and safely handled.
+- NFR-SEC-06: API secrets shall not be exposed in frontend code.
+- NFR-SEC-07: Users shall only access data permitted by their roles.
+- NFR-SEC-08: Payment credentials shall not be collected or stored by a simulated checkout interface.
+
+## 4.4 Reliability
+
+- NFR-REL-01: Common user actions shall have clear success or failure outcomes.
+- NFR-REL-02: Invalid input shall not silently corrupt application state.
+- NFR-REL-03: The interface shall handle missing data gracefully.
+- NFR-REL-04: Repeated actions shall not create unintended duplicate records where persistence is implemented.
+
+## 4.5 Accessibility
+
+- NFR-ACC-01: Interface controls shall have accessible names.
+- NFR-ACC-02: Forms shall have visible labels and understandable validation messages.
+- NFR-ACC-03: Text and interactive controls shall maintain sufficient contrast.
+- NFR-ACC-04: Important actions shall be operable using a keyboard.
+- NFR-ACC-05: Focus indicators shall remain visible.
+- NFR-ACC-06: Property photographs shall have meaningful alternative text.
+- NFR-ACC-07: Information shall not be communicated through color alone.
+- NFR-ACC-08: The interface should follow WCAG 2.2 Level AA guidelines where practical.
+
+## 4.6 Compatibility
+
+- NFR-COMP-01: The application shall support current major desktop and mobile browsers.
+- NFR-COMP-02: Layouts shall adapt to different viewport sizes.
+- NFR-COMP-03: Interactive elements shall remain usable on touchscreens.
+
+## 4.7 Maintainability
+
+- NFR-MAINT-01: Components shall be reusable where appropriate.
+- NFR-MAINT-02: The codebase shall use a consistent naming convention.
+- NFR-MAINT-03: Application routes and shared components shall be organized logically.
+- NFR-MAINT-04: Mock data and service logic shall be separated from presentation components where practical.
+
+---
+
+# 5. HCI DESIGN REQUIREMENTS
+
+This section directly addresses the Good HCI Design requirements of the project.
+
+## 5.1 User-Friendly Interface
+
+- Provide a clean and understandable interface.
+- Avoid unnecessary visual clutter.
+- Use recognizable controls and meaningful labels.
+- Display the most important actions prominently.
+- Keep related information together.
+- Minimize unnecessary user effort.
+
+## 5.2 Clear and Logical Navigation
+
+- Provide a consistent header and navigation menu.
+- Organize the main services into clearly labeled sections.
+- Provide breadcrumbs on deeper pages where useful.
+- Highlight the current navigation destination.
+- Keep navigation consistent across related screens.
+- Provide clear paths back to search results and dashboards.
+
+## 5.3 Appropriate Layout
+
+- Use a responsive grid for property cards.
+- Use readable content widths for forms and detailed descriptions.
+- Align related fields and controls consistently.
+- Use appropriate whitespace to separate sections.
+- Maintain a clear visual hierarchy.
+- Avoid overcrowding pages with unrelated information.
+
+## 5.4 Consistency
+
+- Use the same button styles for the same types of actions.
+- Maintain consistent card layouts and form controls.
+- Use consistent labels for similar concepts.
+- Maintain consistent navigation placement.
+- Reuse colors, typography, spacing, and component patterns.
+- Keep success, warning, and error feedback consistent.
+
+## 5.5 Readability
+
+- Use short headings and concise descriptions.
+- Maintain comfortable line spacing.
+- Use readable font sizes.
+- Avoid excessively long paragraphs in interface content.
+- Make prices, property locations, and key specifications easy to scan.
+- Use tables or aligned cards when comparing properties.
+
+## 5.6 Appropriate Use of Colors
+
+Use a professional real-estate color palette:
+
+- Primary: deep navy blue.
+- Secondary: teal or turquoise.
+- Accent: warm gold for selective highlights.
+- Background: white and very light gray.
+- Primary text: dark slate.
+- Success: accessible green.
+- Warning: accessible amber.
+- Error: accessible red.
+
+Colors must be used consistently. Text must maintain sufficient contrast against its background. Avoid excessive gradients, neon colors, and unnecessary decorative effects.
+
+## 5.7 Typography
+
+- Use Inter or a comparable readable sans-serif typeface.
+- Use clear heading levels.
+- Make page titles visually distinct from section headings.
+- Use consistent font weights and sizes.
+- Use comfortable line height for paragraphs.
+- Ensure forms, prices, and property specifications remain legible on mobile devices.
+
+## 5.8 Effective Buttons and Controls
+
+- Use descriptive button labels such as "Search Properties," "Find My Match," "Generate Design," and "Contact Seller."
+- Make primary actions visually prominent.
+- Use secondary buttons for less important actions.
+- Provide hover, focus, pressed, disabled, and loading states where applicable.
+- Prevent accidental duplicate submissions during processing.
+- Ensure buttons perform real prototype actions.
+
+## 5.9 Clear Feedback
+
+- Display success messages after saving a listing or updating a profile.
+- Show validation messages beside relevant form fields.
+- Display loading indicators during processing.
+- Explain why an action failed and how to recover.
+- Show clear confirmation before deleting listings.
+- Display empty states when no results exist.
+
+## 5.10 Error Prevention
+
+- Validate required fields before submission.
+- Enforce sensible minimum and maximum values.
+- Check price ranges and prevent invalid ranges.
+- Validate uploaded file types and sizes.
+- Confirm destructive actions.
+- Preserve entered form data when validation fails.
+- Show connection-plan duration and cost before simulated checkout confirmation.
+
+## 5.11 Accessibility
+
+- Support keyboard navigation.
+- Provide visible focus indicators.
+- Use semantic headings and landmarks.
+- Associate form labels with their controls.
+- Provide text alternatives for meaningful images.
+- Ensure sufficient contrast.
+- Avoid relying solely on color to communicate status.
+- Support responsive zoom and text resizing.
+
+## 5.12 Information Organization
+
+- Place search and discovery features prominently.
+- Group property information into overview, features, location, and seller information.
+- Group related filters together.
+- Present AI results with clear explanations.
+- Organize seller dashboard statistics separately from listing management.
+- Present subscription plans in a consistent comparison layout.
+
+## 5.13 User-Centered Design
+
+- Support guest browsing before requiring registration.
+- Provide guidance for unfamiliar workflows.
+- Use plain language instead of unnecessary technical terminology.
+- Offer sensible defaults without preventing users from changing them.
+- Provide useful empty states and recovery options.
+- Avoid unnecessary form fields.
+- Ensure the design supports the needs of buyers, sellers, and agents.
+
+---
+
+# 6. USER INTERFACE SCREENS
+
+The prototype shall implement the following screens and routes.
+
+## 6.1 Public Pages
+
+### Screen 1: Home Page
+Route: `/`
+
+Components:
+- Header with Property Partner logo.
+- Navigation links.
+- Sign In and Get Started buttons.
+- Main search bar.
+- Featured properties.
+- Property categories.
+- AI service introduction.
+- Buyer and seller calls to action.
+- Footer.
+
+### Screen 2: Property Search
+Route: `/properties`
+
+Components:
+- Search input.
+- Location selector.
+- Price range filters.
+- Property type filters.
+- Bedrooms and area filters.
+- Sort dropdown.
+- Responsive property grid.
+- Results count.
+- Clear filters button.
+- Empty-state message.
+
+### Screen 3: Property Details
+Route: `/properties/:id`
+
+Components:
+- Image gallery.
+- Property price and location.
+- Key specifications.
+- Description and amenities.
+- Seller information.
+- Favorite button.
+- Compare button.
+- Contact Seller action.
+- Similar properties.
+
+### Screen 4: AI Property Matchmaker
+Route: `/matchmaker`
+
+Components:
+- Introduction.
+- Budget range form.
+- Preferred location.
+- Property type.
+- Sale or rental preference.
+- Bedroom and area requirements.
+- Optional amenities.
+- Find My Match button.
+- Matching results and explanations.
+
+### Screen 5: AI Property Designer
+Route: `/designer`
+
+Components:
+- Image upload area.
+- Image preview.
+- Property type selection.
+- Design area selection.
+- Design style options.
+- Color palette selection.
+- Additional requirements field.
+- Generate Design button.
+- Loading state.
+- Design results.
+- Start Again button.
+
+### Screen 6: AI Connect
+Route: `/connect`
+
+Components:
+- Service explanation.
+- Available plans.
+- Plan duration.
+- Transparent pricing.
+- Plan comparison.
+- Purchase or Subscribe action.
+- Frequently asked questions.
+- Clear disclosure of simulated payment behavior.
+
+### Screen 7: Login
+Route: `/login`
+
+Components:
+- Email field.
+- Password field.
+- Show/hide password control.
+- Remember-me option where appropriate.
+- Login button.
+- Forgot Password link.
+- Registration link.
+- Validation and feedback messages.
+
+### Screen 8: Registration
+Route: `/register`
+
+Components:
+- Full name.
+- Email.
+- Password.
+- Confirm password.
+- User role selection.
+- Terms acceptance.
+- Create Account button.
+- Login link.
+- Validation messages.
+
+### Screen 9: Password Recovery
+Route: `/forgot-password`
+
+Components:
+- Email field.
+- Submit button.
+- Confirmation message.
+- Link back to login.
+
+## 6.2 Buyer Pages
+
+### Screen 10: Buyer Dashboard
+Route: `/dashboard`
+
+Components:
+- Welcome message.
+- Summary cards.
+- Saved properties.
+- Recent property views.
+- Recommended properties.
+- Active connection status.
+- Quick links to core AI services.
+
+### Screen 11: Saved Properties
+Route: `/saved`
+
+Components:
+- Saved property cards.
+- Remove from favorites.
+- View details.
+- Compare properties.
+- Empty-state guidance.
+
+### Screen 12: Property Comparison
+Route: `/compare`
+
+Components:
+- Selected properties.
+- Price comparison.
+- Location.
+- Property type.
+- Area.
+- Bedrooms and bathrooms.
+- Available amenities.
+- Remove property control.
+
+### Screen 13: Messaging
+Route: `/messages`
+
+Components:
+- Conversation list.
+- Selected conversation.
+- Message history.
+- Message input.
+- Send button.
+- Connection access status.
+- Expiry information.
+- Appropriate empty and expired states.
+
+Messaging shall be simulated unless a real backend is connected.
+
+## 6.3 Seller Pages
+
+### Screen 14: Seller Dashboard
+Route: `/seller`
+
+Components:
+- Listing summary.
+- Active and pending listings.
+- Buyer inquiry summary.
+- Recent activity.
+- Add Property button.
+- Manage Listings button.
+
+### Screen 15: Add Property
+Route: `/seller/properties/new`
+
+Components:
+- Property title.
+- Description.
+- Price.
+- Sale or rental selection.
+- Property type.
+- Location.
+- Area.
+- Bedrooms and bathrooms.
+- Amenities.
+- Image uploads.
+- Save Draft and Publish buttons.
+- Validation feedback.
+
+### Screen 16: Manage Properties
+Route: `/seller/properties`
+
+Components:
+- Seller's property listings.
+- Listing status.
+- Edit action.
+- Delete action with confirmation.
+- Preview listing.
+- Add New Property button.
+
+### Screen 17: Edit Profile
+Route: `/profile`
+
+Components:
+- Profile information.
+- Contact information.
+- Profile image where supported.
+- Save Changes button.
+- Validation feedback.
+
+## 6.4 Administrative Page
+
+### Screen 18: Administration Dashboard
+Route: `/admin`
+
+Components:
+- Summary statistics.
+- Sample user records.
+- Property listing records.
+- Reported listings.
+- Listing review actions.
+- Moderation status.
+
+The prototype must not treat a hidden route as sufficient authorization for real administrative operations.
+
+---
+
+# 7. NAVIGATION STRUCTURE
+
+## 7.1 Main Navigation
+
+The public navigation shall contain:
+
+- Home
+- Properties
+- AI Matchmaker
+- AI Designer
+- AI Connect
+- Sign In
+- Get Started
+
+## 7.2 Authenticated Navigation
+
+Buyers shall have access to:
+
+- Dashboard
+- Browse Properties
+- Saved Properties
+- Compare Properties
+- Messages
+- AI Matchmaker
+- AI Designer
+- Profile
+- Logout
+
+Sellers shall have access to:
+
+- Seller Dashboard
+- My Properties
+- Add Property
+- Buyer Inquiries
+- Profile
+- Logout
+
+## 7.3 Navigation Behavior
+
+- The logo shall return users to the home page.
+- Navigation links shall open the correct routes.
+- The active route shall be visually distinguishable.
+- Protected actions shall display a login prompt when necessary.
+- Unknown routes shall display a friendly not-found page.
+- Mobile navigation shall use a clear and accessible menu.
+- Navigation shall not reset user-entered data unnecessarily.
+
+---
+
+# 8. USER WORKFLOWS
+
+## 8.1 Buyer Property Search Workflow
+
+1. User opens the home page.
+2. User enters a location and search criteria.
+3. User opens the property results page.
+4. User applies filters.
+5. User selects a property.
+6. System displays property details.
+7. User saves the property, compares it, or contacts the seller.
+
+Expected result: The user can discover and evaluate properties without confusing navigation.
+
+## 8.2 AI Property Matchmaker Workflow
+
+1. User opens AI Matchmaker.
+2. User enters a budget.
+3. User selects a location.
+4. User selects property type and other preferences.
+5. User submits the form.
+6. System validates the input.
+7. System displays matching sample properties.
+8. System explains why each property matches.
+9. User adjusts preferences or opens a result.
+
+Expected result: The user receives understandable, preference-based property recommendations.
+
+## 8.3 AI Property Designer Workflow
+
+1. User opens AI Designer.
+2. User uploads a property image.
+3. System displays an image preview.
+4. User selects the design style.
+5. User selects colors and additional requirements.
+6. User clicks Generate Design.
+7. System displays processing feedback.
+8. System displays a genuine generated result if an AI provider is connected, or a clearly labeled sample result otherwise.
+9. User starts another design or saves the available output.
+
+Expected result: The user can complete the design workflow and understand whether the result is real or simulated.
+
+## 8.4 AI Connect Workflow
+
+1. User opens AI Connect.
+2. User reviews available plans.
+3. User selects a plan.
+4. System displays its price and duration.
+5. User confirms the simulated purchase.
+6. System displays the connection status and expiry date.
+7. User opens messaging while access is active.
+8. When access expires, the system explains the restriction and displays available renewal options.
+
+Expected result: The user understands the connection entitlement, price, and expiry rules.
+
+## 8.5 Seller Listing Workflow
+
+1. Seller logs in.
+2. Seller opens the dashboard.
+3. Seller selects Add Property.
+4. Seller enters property details.
+5. Seller uploads photographs.
+6. System validates the form.
+7. Seller saves a draft or submits the listing.
+8. System displays confirmation and listing status.
+9. Seller can edit the listing later.
+
+Expected result: The seller can create and manage a listing with clear feedback.
+
+---
+
+# 9. DATA REQUIREMENTS
+
+## 9.1 User Data
+
+Fields:
+- User ID
+- Full name
+- Email
+- Account role
+- Profile image, if available
+- Contact information
+- Account creation date
+
+Passwords and authentication credentials shall be handled by an appropriate authentication service in a production implementation.
+
+## 9.2 Property Data
+
+Fields:
+- Property ID
+- Listing title
+- Description
+- Property type
+- Sale or rental status
+- Price
+- Currency
+- Location
+- Area and area unit
+- Bedrooms
+- Bathrooms
+- Amenities
+- Property photographs
+- Seller ID
+- Listing status
+- Created date
+- Updated date
+
+## 9.3 Matchmaker Preferences
+
+Fields:
+- Budget minimum
+- Budget maximum
+- Preferred location
+- Property type
+- Sale or rental preference
+- Bedrooms
+- Minimum area
+- Preferred amenities
+
+## 9.4 Design Request Data
+
+Fields:
+- Request ID
+- Uploaded image reference
+- Property type
+- Design area
+- Design style
+- Color preferences
+- Additional requirements
+- Processing status
+- Generated output reference, if available
+
+## 9.5 Connection Plan Data
+
+Fields:
+- Plan ID
+- Plan name
+- Price
+- Currency
+- Access duration
+- User ID
+- Start date
+- Expiry date
+- Connection status
+- Transaction status, where applicable
+
+## 9.6 Data Management
+
+The prototype may use sample data or browser storage for demonstrations. Persistent production functionality shall use an appropriate backend database and access-control policies.
+
+Sensitive personal information shall not be placed in publicly accessible sample records.
+
+---
+
+# 10. VALIDATION AND ERROR HANDLING
+
+## 10.1 Form Validation
+
+- Required fields shall not be submitted empty.
+- Email fields shall validate email format.
+- Password confirmation shall match the password entered.
+- Maximum price shall not be less than minimum price.
+- Price and area values shall not accept invalid negative values.
+- Uploaded images shall comply with supported formats and file-size limits.
+- Property forms shall require the essential listing information.
+- Invalid fields shall display specific corrective messages.
+
+## 10.2 Error States
+
+The application shall provide understandable messages for:
+
+- Invalid login details.
+- Missing required fields.
+- Failed image upload.
+- No matching properties.
+- Unavailable property records.
+- Expired connections.
+- Failed simulated transactions.
+- Unauthorized access.
+- Unexpected application errors.
+
+Errors shall not expose stack traces, secrets, or internal implementation details to end users.
+
+## 10.3 Confirmation States
+
+The application shall provide confirmation after:
+
+- Successful login or registration.
+- Saving a favorite property.
+- Saving or publishing a listing.
+- Updating profile information.
+- Completing a simulated subscription.
+- Completing a supported design workflow.
+
+Destructive actions shall display a confirmation dialog and provide a cancel option.
+
+---
+
+# 11. PROTOTYPE IMPLEMENTATION REQUIREMENTS FOR LOVABLE
+
+Lovable shall implement the requirements as a cohesive, interactive website rather than generating a collection of disconnected static screens.
+
+## 11.1 Technology and Structure
+
+- Use React and TypeScript with the project's existing compatible setup.
+- Use Tailwind CSS and reusable components.
+- Use a consistent icon library.
+- Implement real client-side routing.
+- Separate reusable UI components from page-specific logic.
+- Maintain typed interfaces for properties, users, plans, and other data entities.
+- Keep sample data separate from presentation components.
+- Avoid unnecessary dependencies and duplicated code.
+
+## 11.2 Prototype Functionality
+
+The following interactions must work in the prototype:
+
+- Navigation between all major screens.
+- Property search and filtering using sample data.
+- Property detail navigation.
+- Saving and removing favorites.
+- Property comparison.
+- Matchmaker form validation and sample recommendations.
+- Designer image upload and preview.
+- Clearly labeled simulated design results when real AI is unavailable.
+- Login and registration demonstration flows.
+- Seller listing creation, editing, and deletion.
+- Form validation and confirmation messages.
+- Simulated subscription selection and expiry handling.
+- Messaging demonstration and connection access restrictions.
+- Responsive mobile navigation.
+
+Use mock data and local state when appropriate. Browser storage may be used for non-sensitive demonstration persistence, but it must not be represented as secure authentication or production-grade storage.
+
+## 11.3 AI Integration Rules
+
+- Do not claim a real AI operation occurred when only mock results are displayed.
+- Clearly label demonstration outputs.
+- Keep API keys out of client-side code.
+- If a genuine AI provider is integrated, use a secure backend or server-side function.
+- Provide loading, success, and failure states for AI operations.
+
+## 11.4 Payment Integration Rules
+
+- The prototype shall simulate the plan-selection and confirmation workflow.
+- No real payment shall be taken without explicit integration of a legitimate payment provider.
+- Do not request actual card details in the simulated checkout.
+- Display plan price, currency, duration, and expiry conditions before confirmation.
+
+## 11.5 Responsive Design
+
+- Desktop: use a structured multi-column layout where suitable.
+- Tablet: reduce column counts while preserving readable content.
+- Mobile: use single-column layouts for forms and property details where appropriate.
+- Navigation shall adapt to small screens.
+- Buttons and form controls shall be comfortable to operate by touch.
+- Property images shall scale without distortion.
+- Avoid horizontal overflow.
+
+---
+
+# 12. ACCEPTANCE CRITERIA
+
+The prototype shall be considered acceptable when the following conditions are met:
+
+1. The home page clearly introduces Property Partner.
+2. All primary navigation links open the correct pages.
+3. Property listings display consistent information.
+4. Search filters produce appropriate results from the sample data.
+5. Property detail pages show relevant information.
+6. Favorites can be added and removed.
+7. Property comparison works for selected listings.
+8. Matchmaker preferences produce understandable recommendations.
+9. The Designer supports image upload, preview, validation, and a clearly labeled result.
+10. Registration and login demonstration forms validate inputs.
+11. Sellers can create and manage sample property listings.
+12. AI Connect displays transparent plan information.
+13. The simulated connection workflow enforces expiry in the prototype.
+14. Messaging clearly reflects connection access status.
+15. Success, loading, error, and empty states are implemented.
+16. Forms prevent common input errors.
+17. The layout adapts to desktop, tablet, and mobile screens.
+18. Interactive elements have visible focus states and accessible labels.
+19. Colors and typography are consistent throughout the application.
+20. No primary action is left as a nonfunctional placeholder.
+21. The prototype does not misrepresent simulated AI, payment, or verification features as real services.
+22. No major route displays a blank page or an unhandled application error.
+
+---
+
+# 13. TESTING REQUIREMENTS
+
+## 13.1 Functional Testing
+
+Test property search, filtering, property details, favorites, comparison, registration, login, seller listings, matchmaker, designer, and connection workflows.
+
+## 13.2 Usability Testing
+
+Ask representative users to complete common tasks, including finding a property, comparing listings, generating a design concept, and creating a property listing.
+
+Observe task completion, errors, confusion, and user feedback.
+
+## 13.3 Responsive Testing
+
+Test the application at mobile, tablet, and desktop viewport sizes. Confirm that navigation, forms, cards, and buttons remain usable.
+
+## 13.4 Accessibility Testing
+
+Check keyboard navigation, focus visibility, form labels, image alternatives, text contrast, and error-message clarity.
+
+## 13.5 Error Testing
+
+Test empty forms, invalid price ranges, unsupported image formats, no-result searches, expired connections, and failed simulated operations.
+
+---
+
+# 14. FUTURE ENHANCEMENTS
+
+Possible future enhancements include:
+
+- Genuine AI-powered property matching.
+- AI-generated interior and exterior redesigns.
+- Map-based property discovery.
+- Real-time messaging.
+- Secure online payments.
+- Verified seller and property credentials.
+- Property price estimation.
+- Multilingual support.
+- Advanced analytics for sellers.
+- Notifications for new matching properties.
+- Integration with external real-estate data services.
+
+These enhancements shall be implemented only when the required data, services, and security controls are available.
+
+---
+
+# 15. CONCLUSION
+
+Property Partner aims to improve the real-estate experience by combining property discovery, AI-assisted property design, preference-based matching, and structured buyer–seller communication.
+
+The project emphasizes Human–Computer Interaction through clear navigation, consistent layouts, readable typography, appropriate colors, effective controls, accessibility, feedback, and error prevention.
+
+The resulting prototype shall demonstrate how user-centered design can make real-estate services more understandable, efficient, and accessible while establishing a foundation for future backend and AI integration.
+
+---
+
+# FINAL IMPLEMENTATION INSTRUCTION FOR LOVABLE
+
+Build the Property Partner web application according to this complete SRS.
+
+Prioritize the HCI requirements, consistent design system, responsive layouts, functional navigation, realistic sample data, and complete user workflows.
+
+Implement all listed screens with reusable components and appropriate form validation. Ensure that major interactions work, that loading and error states are handled, and that all screens maintain a unified visual identity.
+
+Use a professional real-estate design with deep navy, teal, white, light gray, and restrained warm-gold accents. Use readable sans-serif typography, clear visual hierarchy, appropriate whitespace, accessible controls, and responsive property cards.
+
+Do not generate only a landing page. Implement the complete prototype with public pages, buyer pages, seller pages, connection workflows, and the administrative demonstration interface.
+
+Do not claim that mock AI, simulated payments, sample verification, or browser-only authentication are production services. Keep the prototype functional, transparent, accessible, and suitable for an HCI academic demonstration.
+
+Preserve the existing project configuration where possible, and validate the finished application by checking navigation, core workflows, responsiveness, and error states.
